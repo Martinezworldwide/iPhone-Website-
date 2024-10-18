@@ -1,14 +1,22 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    padding: 20px;
-}
+<script>
+    // Example script to filter players by position
+    function filterPlayers(position) {
+        const playerCards = document.querySelectorAll('.player-card');
+        playerCards.forEach(card => {
+            const playerPosition = card.querySelector('p strong').textContent;
+            if (playerPosition.includes(position) || position === 'All') {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+</script>
 
-h1 {
-    color: darkblue;
-}
-
-p {
-    color: gray;
-    font-size: 18px;
-}
+<!-- Filter Buttons in Main Content -->
+<div class="main-content">
+    <h2>Filter by Position</h2>
+    <button onclick="filterPlayers('Forward')">Forward</button>
+    <button onclick="filterPlayers('Midfielder')">Midfielder</button>
+    <button onclick="filterPlayers('All')">All</button>
+</div>
