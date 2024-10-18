@@ -1,3 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Travel Simulation</title>
+    <style>
+        body { margin: 0; }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+    <h2 style="text-align: center;">Space Travel Simulation</h2>
+    <div style="text-align: center;">
+        <button onclick="travelToMars()">Travel to Mars</button>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+    <script>
+        // Initialize scene, camera, and renderer
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Add lighting to the scene
+        const ambientLight = new THREE.AmbientLight(0x404040);
+        scene.add(ambientLight);
+
+        const pointLight = new THREE.PointLight(0xffffff, 1, 1000);
+        pointLight.position.set(0, 0, 0);  // Sun emits light
+        scene.add(pointLight);
+
+        // Create the Sun
+        const sunGeometry = new THREE.SphereGeometry(2, 32, 32);
+        const sunMaterial = new THREE.MeshBasicMaterial({ color: 0xffff00 });
+        const sun = new THREE.Mesh(sunGeometry, sunMaterial);
+        scene.add(sun);
+
+        // Create Earth
+        const earthGeometry = new THREE.SphereGeometry(0.5, 32, 32);
+        const earthMaterial = new THREE.MeshBasicMaterial({ color: 0x0000ff });
+        const earth = new THREE.Mesh(earthGeometry, earthMaterial);
+        earth.position.set(10, 0, 0);
+        scene.add(earth);
+
+        // Create Mars
+        const marsGeometry = new THREE.SphereGeometry(0.4, 32, 32);
+        const marsMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+        const mars = new THREE.Mesh(marsGeometry, marsMaterial);
+        mars.position.set(15, 0, 0);
+        scene.add(mars);
+
+        // Add orbit controls (to move the camera around)
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        camera.position.z = 20;
+
+        // Animation function
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Rotate Earth and Mars around the Sun
+            earth.position.x = 10 * Math.cos(Date.now() * 0.001);
+            earth.position.z = 10 * Math.sin(Date.now() * 0.001);
+
+            mars.position.x = 15 * Math.cos(Date.now() * 0.0007);
+            mars.position.z = 15 * Math.sin(Date.now() * 0.0007);
+
+            controls.update();
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Function to simulate traveling to Mars
+        function travelToMars() {
+            const travelTime = 3000;  // 3 seconds for demo purposes
+            const startPosition = camera.position.clone();
+            const endPosition = mars.position.clone().setLength(5);  // Zoom in closer to Mars
+
+            let startTime = Date.now();
+
+            function animateTravel() {
+                const elapsedTime = Date.now() - startTime;
+                const fraction = elapsedTime / travelTime;
+
+                if (fraction < 1) {
+                    // Linear interpolation for smooth camera movement
+                    camera.position.lerpVectors(startPosition, endPosition, fraction);
+                    requestAnimationFrame(animateTravel);
+                } else {
+                    // Final position at Mars
+                    camera.position.copy(endPosition);
+                }
+            }
+            animateTravel();
+        }
+
+        // Handle window resizing
+        window.addEventListener('resize', () => {
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+        });
+    </script>
+</body>
+</html>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
