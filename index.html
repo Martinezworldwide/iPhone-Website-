@@ -1,167 +1,99 @@
-
-
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Space Travel Simulation</title>
-    <style>
-        body { margin: 0; }
-        canvas { display: block; }
-    </style>
-</head>
-<body>
-    <h2 style="text-align: center;">Space Travel Simulation</h2>
-    <div style="text-align: center;">
-        <button onclick="travelToMars()">Travel to Mars</button>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-
-    <script>
-        // Initialize scene, camera, and renderer
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.body.appendChild(renderer.domElement);
-
-        // Add lighting to the scene
-        const ambientLight = new THREE.AmbientLight(0x404040);
-        scene.add(ambientLight);
-
-        const pointLight = new THREE.PointLight(0xffffff, 1, 1000);
-        pointLight.position.set(0, 0, 0);  // Sun emits light
-        scene.add(pointLight);
-
-        // Create the Sun
-        const sunGeometry = new THREE.SphereGeometry(2, 32, 32);
-        const sunMaterial = new THREE.MeshBasicMaterial({ color: 0xffff00 });
-        const sun = new THREE.Mesh(sunGeometry, sunMaterial);
-        scene.add(sun);
-
-        // Create Earth
-        const earthGeometry = new THREE.SphereGeometry(0.5, 32, 32);
-        const earthMaterial = new THREE.MeshBasicMaterial({ color: 0x0000ff });
-        const earth = new THREE.Mesh(earthGeometry, earthMaterial);
-        earth.position.set(10, 0, 0);
-        scene.add(earth);
-
-        // Create Mars
-        const marsGeometry = new THREE.SphereGeometry(0.4, 32, 32);
-        const marsMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-        const mars = new THREE.Mesh(marsGeometry, marsMaterial);
-        mars.position.set(15, 0, 0);
-        scene.add(mars);
-
-        // Add orbit controls (to move the camera around)
-        const controls = new THREE.OrbitControls(camera, renderer.domElement);
-        camera.position.z = 20;
-
-        // Animation function
-        function animate() {
-            requestAnimationFrame(animate);
-
-            // Rotate Earth and Mars around the Sun
-            earth.position.x = 10 * Math.cos(Date.now() * 0.001);
-            earth.position.z = 10 * Math.sin(Date.now() * 0.001);
-
-            mars.position.x = 15 * Math.cos(Date.now() * 0.0007);
-            mars.position.z = 15 * Math.sin(Date.now() * 0.0007);
-
-            controls.update();
-            renderer.render(scene, camera);
-        }
-        animate();
-
-        // Function to simulate traveling to Mars
-        function travelToMars() {
-            const travelTime = 3000;  // 3 seconds for demo purposes
-            const startPosition = camera.position.clone();
-            const endPosition = mars.position.clone().setLength(5);  // Zoom in closer to Mars
-
-            let startTime = Date.now();
-
-            function animateTravel() {
-                const elapsedTime = Date.now() - startTime;
-                const fraction = elapsedTime / travelTime;
-
-                if (fraction < 1) {
-                    // Linear interpolation for smooth camera movement
-                    camera.position.lerpVectors(startPosition, endPosition, fraction);
-                    requestAnimationFrame(animateTravel);
-                } else {
-                    // Final position at Mars
-                    camera.position.copy(endPosition);
-                }
-            }
-            animateTravel();
-        }
-
-        // Handle window resizing
-        window.addEventListener('resize', () => {
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-        });
-    </script>
-</body>
-</html>
-<html lang="en">
-<head>
-
-<link rel="stylesheet" href="styles.css">
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
+    <title>Football Scouting App</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             background-color: #f4f4f4;
         }
-        h1 {
-            color: #333;
+        .navbar {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
         }
-        p {
-            font-size: 18px;
+        .navbar a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        .main-content {
+            padding: 20px;
+            text-align: center;
+        }
+        .player-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        .player-card img {
+            max-width: 150px;
+            height: auto;
+            border-radius: 50%;
+        }
+        .player-info {
+            text-align: left;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
-    <h2>Currency Converter</h2>
-<input type="number" id="amount" placeholder="Amount">
-<select id="currencyFrom">
-    <option value="USD">USD</option>
-    <option value="EUR">EUR</option>
-</select>
-<select id="currencyTo">
-    <option value="EUR">EUR</option>
-    <option value="USD">USD</option>
-</select>
-<button onclick="convertCurrency()">Convert</button>
-<p id="conversionResult"></p>
 
-<script>
-    async function convertCurrency() {
-        const amount = document.getElementById('amount').value;
-        const fromCurrency = document.getElementById('currencyFrom').value;
-        const toCurrency = document.getElementById('currencyTo').value;
+    <div class="navbar">
+        <a href="#">Home</a>
+        <a href="#">Scouting Reports</a>
+        <a href="#">Players</a>
+        <a href="#">Login</a>
+    </div>
 
-        const response = await fetch(`https://v6.exchangerate-api.com/v6/YOUR_API_KEY/latest/${fromCurrency}`);
-        const data = await response.json();
+    <div class="main-content">
+        <h1>Welcome to the Football Scouting App</h1>
+        <p>Scout the best football talents worldwide.</p>
+        
+        <!-- Example of Player Card -->
+        <div class="player-card">
+            <img src="player.jpg" alt="Player Photo">
+            <div class="player-info">
+                <h2>Player Name</h2>
+                <p><strong>Position:</strong> Forward</p>
+                <p><strong>Age:</strong> 22</p>
+                <p><strong>Nationality:</strong> Brazil</p>
+                <p><strong>Current Club:</strong> Santos FC</p>
+            </div>
+        </div>
+        
+        <!-- Another player card -->
+        <div class="player-card">
+            <img src="player2.jpg" alt="Player Photo">
+            <div class="player-info">
+                <h2>Player Name</h2>
+                <p><strong>Position:</strong> Midfielder</p>
+                <p><strong>Age:</strong> 24</p>
+                <p><strong>Nationality:</strong> Spain</p>
+                <p><strong>Current Club:</strong> Valencia CF</p>
+            </div>
+        </div>
+    </div>
 
-        const rate = data.conversion_rates[toCurrency];
-        const convertedAmount = amount * rate;
+    <footer>
+        <p>Football Scouting App &copy; 2024</p>
+    </footer>
 
-        document.getElementById('conversionResult').innerHTML = `${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency}`;
-    }
-</script>
-    <h1>Welcome to My Website</h1>
-    <p>This is a simple website built from my iPhone!</p>
 </body>
 </html>
+
