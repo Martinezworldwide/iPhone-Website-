@@ -3,27 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join Our Facebook Group</title>
+    <title>Martinez Worldwide Websites</title>
     <style>
-        .fb-button {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 18px;
-            color: white;
-            background-color: #4267B2;  /* Facebook blue */
-            text-decoration: none;
-            border-radius: 5px;
-            text-align: center;
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
         }
-        .fb-button:hover {
-            background-color: #365899;
+        h1 {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+            margin: 0;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            padding: 20px;
+        }
+        .iframe-wrapper {
+            position: relative;
+            overflow: hidden;
+            padding-top: 56.25%;
+            border: 2px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            background-color: #fff;
+        }
+        .iframe-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
     </style>
 </head>
 <body>
-    <h1>Join Our Facebook Group</h1>
-    <a class="fb-button" href="https://www.facebook.com/groups/HCSSJgPGKoSsHTiw" target="_blank">
-        Visit Our Facebook Group
-    </a>
+
+    <h1>Martinez Worldwide Websites</h1>
+
+    <div class="container">
+        <!-- Replace this with each of your links, creating an iframe for each -->
+        <div class="iframe-wrapper">
+            <iframe src="https://martinezworldwide.wixsite.com/martinezlifestyle"></iframe>
+        </div>
+        <div class="iframe-wrapper">
+            <iframe src="https://engineeredsystems.wixsite.com/movies"></iframe>
+        </div>
+        <div class="iframe-wrapper">
+            <iframe src="https://engineeredsystems.wixsite.com/fashion"></iframe>
+        </div>
+        <div class="iframe-wrapper">
+            <iframe src="https://engineeredsystems.wixsite.com/bestapps"></iframe>
+        </div>
+        <!-- Add additional iframes here -->
+        <!-- Example -->
+        <div class="iframe-wrapper">
+            <iframe src="https://engineeredsystems.wixsite.com/bookstore"></iframe>
+        </div>
+        <!-- Continue adding for all links -->
+    </div>
+
 </body>
 </html>
