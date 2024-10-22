@@ -3,165 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Martinez Worldwide Websites - Main Page</title>
+    <title>Martinez Websites - Page 1</title>
     <style>
         body {
-            margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
         }
         h1 {
-            text-align: center;
-            padding: 20px;
-            background-color: #333;
-            color: #fff;
-            margin: 0;
-        }
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 15px;
-            padding: 20px;
-        }
-        .iframe-wrapper {
-            border: 2px solid #ddd;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            background-color: #fff;
-            padding: 10px;
-            overflow: hidden;
-        }
-        .iframe-title {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 5px;
-            text-align: center;
+            margin-bottom: 20px;
         }
         .iframe-container {
-            position: relative;
-            padding-top: 56.25%;
+            width: 80%;
+            height: 80vh;
+            margin-bottom: 20px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            overflow: hidden;
         }
-        .iframe-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
+        iframe {
             width: 100%;
             height: 100%;
-            border: 0;
-        }
-        .navigation {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-            gap: 10px;
-        }
-        .nav-button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #333;
-            color: #fff;
             border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.3s;
         }
-        .nav-button:hover {
-            background-color: #555;
+        nav {
+            margin-top: 20px;
         }
-        a {
+        .nav-link {
+            margin: 0 10px;
             text-decoration: none;
-            color: white;
+            color: #007BFF;
+            font-size: 18px;
+        }
+        .nav-link:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-
-    <h1>Martinez Worldwide Websites - Main Page</h1>
-
-    <div class="container">
-        <!-- Add your first set of iframes -->
-                <div class="iframe-wrapper">
-            <div class="iframe-title">Martinez Lifestyle</div>
-            <div class="iframe-container">
-                <iframe src="https://martinezworldwide.wixsite.com/martinezlifestyle" title="Martinez Lifestyle"></iframe>
-            </div>
-        </div>
-        <div class="iframe-wrapper">
-            <div class="iframe-title">Movies</div>
-            <div class="iframe-container">
-                <iframe src="https://engineeredsystems.wixsite.com/movies" title="Movies"></iframe>
-            </div>
-        </div>
-        <div class="iframe-wrapper">
-            <div class="iframe-title">Fashion</div>
-            <div class="iframe-container">
-                <iframe src="https://engineeredsystems.wixsite.com/fashion" title="Fashion"></iframe>
-            </div>
-        </div>
-        <div class="iframe-wrapper">
-            <div class="iframe-title">Best Apps</div>
-            <div class="iframe-container">
-                <iframe src="https://engineeredsystems.wixsite.com/bestapps" title="Best Apps"></iframe>
-            </div>
-        </div>
-        <div class="iframe-wrapper">
-            <div class="iframe-title">Bookstore</div>
-            <div class="iframe-container">
-                <iframe src="https://engineeredsystems.wixsite.com/bookstore" title="Bookstore"></iframe>
-            </div>
-        </div>
-        <div class="iframe-wrapper">
-            <div class="iframe-title">Essentials</div>
-            <div class="iframe-container">
-                <iframe src="https://engineeredsystems.wixsite.com/essentials" title="Essentials"></iframe>
-            </div>
-        </div>
-        <div class="iframe-wrapper">
-            <div class="iframe-title">Events</div>
-            <div class="iframe-container">
-                <iframe src="https://engineeredsystems.wixsite.com/events" title="Events"></iframe>
-            </div>
-        </div>
-        <div class="iframe-wrapper">
-            <div class="iframe-title">Music</div>
-            <div class="iframe-container">
-                <iframe src="https://engineeredsystems.wixsite.com/music" title="Music"></iframe>
-            </div>
-        </div>
-        <div class="iframe-wrapper">
-            <div class="iframe-title">ULMS</div>
-            <div class="iframe-container">
-                <iframe src="https://martinezworldwide.wixsite.com/ulms" title="ULMS"></iframe>
-            </div>
-        </div>
-        <div class="iframe-wrapper">
-            <div class="iframe-title">eChat Nutrition</div>
-            <div class="iframe-container">
-                <iframe src="https://martinezworldwide.wixsite.com/echatnutrition" title="eChat Nutrition"></iframe>
-            </div>
-        </div>
-        <div class="iframe-wrapper">
-            <div class="iframe-title">Solar Team Guide</div>
-            <div class="iframe-container">
-                <iframe src="https://engineeredsystems.wixsite.com/solarteamguide" title="Solar Team Guide"></iframe>
-            </div>
-        </div>
-        <div class="iframe-wrapper">
-            <div class="iframe-title">Solar Team Club</div>
-            <div class="iframe-container">
-                <iframe src="https://martinezworldwide.wixsite.com/solarteamclub" title="Solar Team Club"></iframe>
-            </div>
-        </div>
-        <!-- Add more iframes for the first page -->
+    <h1>Martinez Websites - Page 1</h1>
+    <div class="iframe-container">
+        <iframe src="https://martinezworldwide.wixsite.com/martinezlifestyle" title="Martinez Lifestyle"></iframe>
     </div>
-
-    <!-- Navigation Buttons -->
-    <div class="navigation">
-        <button class="nav-button"><a href="page2.html">Go to Page 2</a></button>
-        <button class="nav-button"><a href="page3.html">Go to Page 3</a></button>
-        <button class="nav-button"><a href="page4.html">Go to Page 4</a></button>
-        <button class="nav-button"><a href="page5.html">Go to Page 5</a></button>
+    <div class="iframe-container">
+        <iframe src="https://engineeredsystems.wixsite.com/movies" title="Movies by Engineered Systems"></iframe>
     </div>
-
+    <!-- Add more iframes here -->
+    <nav>
+        <a href="page2.html" class="nav-link">Next Page</a>
+    </nav>
 </body>
 </html>
