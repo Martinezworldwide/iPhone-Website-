@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube Video Embed Tool</title>
+    <title>Wix Editor</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -47,38 +47,14 @@
     </style>
 </head>
 <body>
-
-<div class="container">
-    <h1>YouTube Video Embed Tool</h1>
-    <input type="text" id="videoUrl" placeholder="https://youtu.be/4jU19tGsG9o?feature=shared">
-    <button onclick="embedVideo()">Embed Video</button>
-
-    <div id="videoContainer"></div>
+<div class="iframe-container">
+    <div class="iframe-title">Wix Editor</div>
+    <a href="https://editor.wix.com/html/editor/web/renderer/edit/ef3ff51f-d0b8-4d14-a3c8-d5bf10af4408?metaSiteId=378c49c5-11f2-4eb5-b0fe-4eafa982e210&editorSessionId=371c6647-0f02-44ce-8c32-cf09611d3a92" target="_blank" style="text-decoration: none;">
+        <div style="border: 1px solid #ccc; padding: 20px; text-align: center; border-radius: 10px; background-color: #f9f9f9;">
+            <p style="font-size: 20px; margin: 0;">Open Wix Editor</p>
+        </div>
+    </a>
 </div>
-
-<script>
-    function embedVideo() {
-        const videoUrl = document.getElementById('videoUrl').value;
-        const videoContainer = document.getElementById('videoContainer');
-
-        // Extract video ID from the URL
-        const videoIdMatch = videoUrl.match(/(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([^&]+)/) ||
-                             videoUrl.match(/(?:https?:\/\/)?(?:www\.)?youtu\.be\/([^&]+)/);
-
-        if (videoIdMatch && videoIdMatch[1]) {
-            const videoId = videoIdMatch[1];
-
-            // Create an iframe to embed the video
-            videoContainer.innerHTML = `
-                <iframe src="https://www.youtube.com/embed/${videoId}" 
-                        frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
-                        encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-                </iframe>`;
-        } else {
-            alert('Invalid YouTube URL. Please try again.');
-        }
-    }
-</script>
 <nav>
     <a href="index.html" class="nav-link">Page 1</a>
     <a href="page2.html" class="nav-link">Page 2</a>
